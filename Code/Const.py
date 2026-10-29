@@ -1,0 +1,11 @@
+#C
+COLOR_CRIMSON = (255,0,0)
+COLOR_WHITE = (255,255,255)
+
+#M
+MENU_OPTION = ('Start Game',
+               'Exit')
+
+#W
+WIN_WIDTH = 823
+WIN_HEIGHT = 480

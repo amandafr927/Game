@@ -8,7 +8,7 @@ from Code.Menu import Menu
 class Game:
     def __init__(self):
         pygame.init()
-        self.window = pygame.display.set_mode(size=(600, 480))
+        self.window = pygame.display.set_mode(size=(823, 480))
         self.player = None
         self.level = None
         self.running = None
@@ -17,18 +17,11 @@ class Game:
         pass
 
     def run(self):
+        pygame.display.set_caption('Knights Honor')
         while True:
             menu = Menu(self.window)
             menu.run()
             pass
-
-
-
-    # for event in pygame.event.get():
-    # if event.type == pygame.QUIT:
-    # pygame.quit()
-    # quit()
-
 
 def handle_events(self, ):
     pass
