@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 import pygame
 
+from Code.Const import MENU_OPTION
+from Code.Level import Level
 from Code.Menu import Menu
 
 
@@ -20,12 +22,22 @@ class Game:
         pygame.display.set_caption('Knights Honor')
         while True:
             menu = Menu(self.window)
-            menu.run()
-            pass
+            menu_return = menu.run()
 
-def handle_events(self, ):
+            if menu_return == MENU_OPTION[0]:
+                level = Level(self.window, 'Level1')
+                level_return = level.run()
+            else:
+                pygame.quit()
+                quit()
+
+
+
+
+
+#def handle_events(self, ):
     pass
 
 
-def check_game_over(self, ):
+#def check_game_over(self, ):
     pass
