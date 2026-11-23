@@ -9,9 +9,6 @@ class Entity:
         self.speed = speed
         self.is_alive = True
 
-    def move(self, ):
-        pass
-
     def take_damage(self, amount):
         if not self.is_alive:
             return

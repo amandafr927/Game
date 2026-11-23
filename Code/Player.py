@@ -15,9 +15,7 @@ class Player(Entity):
         speed=6)
 
         self.image_offset_x = None
-        self.Attack = None
         self.is_attacking = False
-        self.Defense = None
         self.facing_right = True
         self.attack_damage = None
         self.hit_enemies = set()
@@ -169,10 +167,7 @@ class Player(Entity):
             self.current_animation = attack_type
             self.frame_index = 0
             self.last_update = pygame.time.get_ticks()
-            if attack_type == 'attack1':
-                self.attack_damage = 20
-            elif attack_type == 'attack2':
-                self.attack_damage = 20
+            self.attack_damage = 20
             self.hit_enemies.clear()
 
     def get_attack_rect(self):

@@ -9,10 +9,8 @@ from Code.Camera import Camera
 from Code.Guardian import Guardian
 
 class Level:
-    def __init__(self, window, name):
+    def __init__(self, window):
         self.window = window
-        self.name = name
-        self.entity_list: list[Entity] = []
         self.background = pygame.image.load(
             './asset/comchao.png'
         ).convert()
