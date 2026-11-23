@@ -13,4 +13,11 @@ class Entity:
         pass
 
     def take_damage(self, amount):
-        pass
+        if not self.is_alive:
+            return
+
+        self.health -= amount
+
+        if self.health <= 0:
+            self.health = 0
+            self.is_alive = False

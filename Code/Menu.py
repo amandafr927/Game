@@ -44,7 +44,6 @@ class Menu:
                         else:
                             menu_option = len(MENU_OPTION) - 1
                     if event.key == pygame.K_RETURN:
-                        pygame.mixer.music.stop()
                         pygame.mixer.music.fadeout(1000)
                         return MENU_OPTION[menu_option]
 
