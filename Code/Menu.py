@@ -15,7 +15,7 @@ class Menu:
 
     def run(self, ):
         menu_option = 0
-        pygame.mixer_music.load('./asset/the_field_of_dreams.mp3')
+        pygame.mixer_music.load('./asset/tems-3-premium-f-minor.wav')
         pygame.mixer_music.play(-1)
         while True:
             self.window.blit(source=self.surf, dest=self.rect)

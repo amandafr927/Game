@@ -133,6 +133,12 @@ class Player(Entity):
                 self.image = frame
                 self.image_offset_x = 0
 
+    def change_animation(self, animation):
+        if self.current_animation != animation:
+            self.current_animation = animation
+            self.frame_index = 0
+            self.last_update = pygame.time.get_ticks()
+
     def move(self):
         if not self.is_alive:
             return
@@ -143,16 +149,16 @@ class Player(Entity):
 
         if keys[pygame.K_d]:
             self.facing_right = True
-            self.current_animation = 'run'
+            self.change_animation('run')
             self.x += self.speed
 
         elif keys[pygame.K_a]:
             self.facing_right = False
-            self.current_animation = 'run'
+            self.change_animation('run')
             self.x -= self.speed
 
         else:
-            self.current_animation = 'idle'
+            self.change_animation('idle')
 
 
     def attack(self, attack_type):
