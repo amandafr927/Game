@@ -1,0 +1,47 @@
+
+name: Build Knight's Honor for Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Download project
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install pyinstaller
+
+      - name: Build executable
+        run: |
+          python -m PyInstaller --noconfirm --clean --onedir --windowed --name KnightsHonor main.py
+
+      - name: Copy assets and credits
+        run: |
+          Copy-Item -Path "asset" -Destination "dist/KnightsHonor/asset" -Recurse -Force
+          Copy-Item -Path "CREDITS.txt" -Destination "dist/KnightsHonor/CREDITS.txt" -Force
+
+      - name: Create ZIP
+        run: |
+          Compress-Archive -Path "dist/KnightsHonor/*" -DestinationPath "dist/KnightsHonor_Entrega.zip" -Force
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: KnightsHonor-Windows
+          path: dist/KnightsHonor_Entrega.zip
+          if-no-files-found: error
+
