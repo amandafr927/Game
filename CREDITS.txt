@@ -1,0 +1,63 @@
+# KNIGHT'S HONOR
+## ASSET CREDITS & ATTRIBUTIONS
+
+**Game:** Knight's Honor  
+**Engine:** Python / pygame
+**Year:** 2026
+
+This project uses third-party assets. All rights belong to their respective authors and creators.
+
+### 1. PLAYER CHARACTER
+
+**Free Knight Character Sprites Pixel Art**  
+- Creator / Publisher: CraftPix
+- Source: https://craftpix.net/freebies/free-knight-character-sprites-pixel-art/
+- License: CraftPix Freebie License
+- Modifications: Sprite sheets may have been edited or adapted for the game.
+
+### 2. ENEMY SPRITES
+
+**GothicVania Cemetery Pack**  
+- Artist: Luis Zuno (Ansimuz)
+- Source: https://opengameart.org/content/gothicvania-cemetery-pack
+- License: CC0 1.0 Universal (Public Domain)
+
+### 3. GUARDIAN SPRITE
+
+**GothicVania Patreon's Collection**  
+- Artist: Luis Zuno (Ansimuz)
+- Source: https://opengameart.org/content/gothicvania-patreons-collection
+- License: CC0 1.0 Universal (Public Domain)
+
+### 4. BACKGROUND AND ENVIRONMENT
+
+**GothicVania - Church Pack**  
+- Artist: Luis Zuno (Ansimuz)
+- Source: https://opengameart.org/content/gothicvania-church-pack
+- License: CC0 1.0 Universal (Public Domain)
+
+### 5. MUSIC
+
+**Stems 3 (PREMIUM) F minor**  
+- Artist: NotMeat2020 Beats
+- Source: https://freesound.org/people/NotMeat2020/sounds/874942/
+- License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+- Attribution: Music by NotMeat2020 Beats.
+
+### 6. FONTS
+
+**Olde English**
+- Author: Typographer Mediengestaltung
+- Source: https://www.1001fonts.com/olde-english-font.html
+- License: 1001Fonts Free For Commercial Use (FFC)
+
+**Public Pixel**
+- Author: GGBotNet
+- Source: https://www.dafont.com/public-pixel.font
+- License: Creative Commons Zero 1.0 Universal (CC0)
+
+### 7. DEVELOPMENT
+
+Knight's Honor was developed in Python using the Pygame library as an academic project for the Applied Programming course.
+
+Thank you to all the artists and creators who make their work available to the game development community.
