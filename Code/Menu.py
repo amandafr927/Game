@@ -27,6 +27,10 @@ class Menu:
                 else:
                     self.menu_options(15, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 300 + 30 * i))
 
+            self.menu_options(10, "A / D - MOVE", COLOR_WHITE, (WIN_WIDTH / 2, 390))
+            self.menu_options(10, "J - ATTACK 1   K - ATTACK 2", COLOR_WHITE, (WIN_WIDTH / 2, 420))
+            self.menu_options(10, "L - DEFEND", COLOR_WHITE, (WIN_WIDTH / 2, 450))
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()

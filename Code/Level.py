@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 import pygame
 
-from Code.Entity import Entity
-from Code.Player import Player
-from Code.Enemy import Enemy
 from Code.Camera import Camera
+from Code.Enemy import Enemy
 from Code.Guardian import Guardian
+from Code.Player import Player
+
 
 class Level:
     def __init__(self, window):
@@ -18,12 +18,15 @@ class Level:
         scale = self.window.get_height() / self.background.get_height()
         self.player = Player()
         self.enemies = [
-            Enemy('ghoul', 600, 302),
-            Enemy('hound', 800, 358),
-            Enemy('ghoul', 1000, 302)
+            Enemy('ghoul', 800, 302),
+            Enemy('hound', 1000, 358),
+            Enemy('ghoul', 1400, 302),
+            Enemy('ghoul', 1600, 302),
+            Enemy('hound', 2000, 358),
+            Enemy('ghoul', 2500, 302)
         ]
         self.guardian = Guardian(
-            x=1400,
+            x=3000,
             y=157
         )
         self.dialogue_active = False
@@ -49,6 +52,8 @@ class Level:
         self.rect = self.background.get_rect(topleft=(0, 0))
 
         self.game_over = False
+        self.mission_completed = False
+        self.won = False
 
     def run(self, ):
         running = True
@@ -66,6 +71,12 @@ class Level:
                             self.fade_start = pygame.time.get_ticks()
 
                         continue
+                    if self.mission_completed:
+                        if event.key == pygame.K_RETURN:
+                            running = False
+
+                        continue
+
                     if self.dialogue_active:
                         if event.key == pygame.K_RETURN:
 
@@ -73,13 +84,11 @@ class Level:
                                 self.dialogue_index += 1
 
                             else:
+                                self.won = True
                                 self.fade_out = True
                                 self.fade_start = pygame.time.get_ticks()
 
                         continue
-
-                    if event.key == pygame.K_h:
-                        self.player.take_damage(25)
 
                     if event.key == pygame.K_j:
                         self.player.attack('attack1')
@@ -87,7 +96,7 @@ class Level:
                     if event.key == pygame.K_k:
                         self.player.attack('attack2')
 
-            if not self.dialogue_active and not self.fade_out and not self.game_over:
+            if not self.dialogue_active and not self.fade_out and not self.game_over and not self.mission_completed:
                 keys = pygame.key.get_pressed()
 
                 self.player.defend(keys[pygame.K_l])
@@ -139,7 +148,11 @@ class Level:
                 self.window.blit(fade_surface, (0, 0))
 
                 if alpha >= 255:
-                    running = False
+                    if self.won:
+                        self.mission_completed = True
+                        self.fade_out = False
+                    else:
+                        running = False
 
             pygame.display.flip()
             clock.tick(60)
@@ -176,6 +189,8 @@ class Level:
         self.draw_dialogue()
         self.draw_health_bar()
         self.draw_game_over()
+        self.draw_mission_completed()
+
     def check_player_attacks(self):
         if not self.player.is_attacking:
             return
@@ -363,6 +378,50 @@ class Level:
             center=(
                 self.window.get_width() // 2,
                 self.window.get_height() // 2 + 55
+            )
+        )
+
+        self.window.blit(hint, hint_rect)
+
+    def draw_mission_completed(self):
+        if not self.mission_completed:
+            return
+
+        overlay = pygame.Surface(self.window.get_size())
+        overlay.fill((0, 0, 0))
+        overlay.set_alpha(190)
+
+        self.window.blit(overlay, (0, 0))
+
+        font = pygame.font.Font('./asset/fonts/PublicPixel.ttf', 30)
+
+        text = font.render(
+            "MISSION COMPLETED",
+            True,
+            (220, 190, 100)
+        )
+
+        text_rect = text.get_rect(
+            center=(
+                self.window.get_width() // 2,
+                self.window.get_height() // 2 - 20
+            )
+        )
+
+        self.window.blit(text, text_rect)
+
+        small_font = pygame.font.Font(None, 25)
+
+        hint = small_font.render(
+            "Press ENTER to return to the main menu",
+            True,
+            (220, 220, 220)
+        )
+
+        hint_rect = hint.get_rect(
+            center=(
+                self.window.get_width() // 2,
+                self.window.get_height() // 2 + 40
             )
         )
 

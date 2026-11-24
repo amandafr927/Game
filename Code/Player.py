@@ -38,7 +38,8 @@ class Player(Entity):
         self.load_sprites()
         self.image = self.animations['idle'][0]
 
-    def load_animation(self, filename, frames, align=False):
+    @staticmethod
+    def load_animation(filename, frames, align=False):
 
         sheet = pygame.image.load(filename).convert_alpha()
 
@@ -101,7 +102,7 @@ class Player(Entity):
 
             animation = self.animations[self.current_animation]
 
-            if now - self.last_update >= 80:
+            if now - self.last_update >= 100:
                 self.last_update = now
 
                 if self.current_animation == 'death':
